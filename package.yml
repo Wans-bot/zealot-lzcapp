@@ -1,4 +1,4 @@
-package: cloud.lazycat.app.zealot
+package: cloud.lazycat.app.zealot-dist
 version: 6.2.2
 name: Zealot
 description: 自托管的 App 内测分发平台
