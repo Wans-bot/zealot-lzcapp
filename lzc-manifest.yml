@@ -22,7 +22,8 @@ services:
       ZEALOT_POSTGRES_USERNAME: zealot
       ZEALOT_POSTGRES_PASSWORD: '{{ stable_secret "ZEALOT_DB_PASSWORD" }}'
       ZEALOT_POSTGRES_DB_NAME: zealot
-      SECRET_TOKEN: '{{ stable_secret "ZEALOT_SECRET_TOKEN" }}'
+      SECRET_KEY_BASE: '{{ stable_secret "ZEALOT_SECRET_KEY_BASE" }}'
+      ZEALOT_DOMAIN: ''
       ZEALOT_GUEST_MODE: "true"
       ZEALOT_ADMIN_EMAIL: admin@zealot.com
       ZEALOT_ADMIN_PASSWORD: '{{ stable_secret "ZEALOT_ADMIN_PASSWORD" }}'
