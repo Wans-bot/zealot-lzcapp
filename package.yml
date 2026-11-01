@@ -1,0 +1,24 @@
+package: cloud.lazycat.app.zealot
+version: 6.2.2
+name: Zealot
+description: 自托管的 App 内测分发平台
+author: tryzealot
+license: MIT
+homepage: https://github.com/tryzealot/zealot
+min_os_version: 1.6.0
+permissions:
+  required:
+    - net.internet
+locales:
+  zh-CN:
+    name: Zealot 内测分发
+    description: 自托管的 App 内测分发平台，支持 iOS / Android 版本的构建上传、版本管理、安装二维码与设备 UDID 登记。
+    usage: |
+      打开应用即可浏览应用列表（游客模式已开启）。
+      管理员账号默认 admin@zealot.com，初始密码见下方面板，请登录后立即修改。
+  en-US:
+    name: Zealot
+    description: Self-hosted app beta distribution platform for iOS/Android builds.
+    usage: |
+      Open the app to browse releases (guest mode enabled).
+      Default admin: admin@zealot.com — change the password after first login.
