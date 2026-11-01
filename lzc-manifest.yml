@@ -1,0 +1,37 @@
+usage: |
+  打开即浏览应用列表（游客模式已开启）。管理员默认账号 admin@zealot.com。
+application:
+  subdomain: zealot
+  health_check:
+    test_url: http://zealot:80/
+    disable: false
+    start_period: 240s
+    timeout: 10s
+  upstreams:
+    - location: /
+      backend: http://zealot:80
+services:
+  zealot:
+    image: registry.lazycat.cloud/wans/wans-zealot-6.2.2:5b385eb3ab7e528d
+    environment:
+      TZ: Asia/Shanghai
+      RAILS_ENV: production
+      DEFAULT_LOCALE: zh-CN
+      ZEALOT_POSTGRES_HOST: postgres
+      ZEALOT_POSTGRES_PORT: "5432"
+      ZEALOT_POSTGRES_USERNAME: zealot
+      ZEALOT_POSTGRES_PASSWORD: '{{ stable_secret "ZEALOT_DB_PASSWORD" }}'
+      ZEALOT_POSTGRES_DB_NAME: zealot
+      SECRET_TOKEN: '{{ stable_secret "ZEALOT_SECRET_TOKEN" }}'
+      ZEALOT_GUEST_MODE: "true"
+      ZEALOT_ADMIN_EMAIL: admin@zealot.com
+      ZEALOT_ADMIN_PASSWORD: '{{ stable_secret "ZEALOT_ADMIN_PASSWORD" }}'
+  postgres:
+    image: registry.lazycat.cloud/wans/library/postgres:54b52fdd68074990
+    environment:
+      TZ: Asia/Shanghai
+      POSTGRES_USER: zealot
+      POSTGRES_PASSWORD: '{{ stable_secret "ZEALOT_DB_PASSWORD" }}'
+      POSTGRES_DB: zealot
+    binds:
+      - /lzcapp/var/postgres:/var/lib/postgresql/data
